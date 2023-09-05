@@ -12,9 +12,9 @@ follows the [official architecture guidance](https://developer.android.com/jetpa
 * **Hilt** Dependency injection.
 * **WorkManger** executes sync job for keeping data up to date and showing status notification.
 * **DataStore** for storing user preferred location.
-* **ROOM** local database with _one to many relationship_
+* **ROOM** local database, includes: _one to many relationship_ and TypeConverters.
 * **Location-Aware App** using GPS sensors/Last known location for fetching local forecast.
-* **ConnectivityManager** used to Monitori network connections. 
+* **ConnectivityManager** Monitoring network connections. 
 
   
 ## Libraries & Dependencies
