@@ -2,7 +2,7 @@
 **MyWeatherApp** is a Android app built entirely with Kotlin and Jetpack Compose. It
 follows Follows the [official architecture guidance](https://developer.android.com/jetpack/guide) as closely as possible.
 
-# Features
+## Features
 *   Get 7 days forecast for your current location with a click.
 *   Search and manage 7 days forecast for any location on the globe.
 
