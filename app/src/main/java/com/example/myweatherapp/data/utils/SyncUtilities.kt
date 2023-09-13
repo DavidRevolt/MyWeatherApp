@@ -1,4 +1,4 @@
-package com.example.myweatherapp.data
+package com.example.myweatherapp.data.utils
 
 import android.util.Log
 import com.example.myweatherapp.model.Weather
@@ -53,8 +53,8 @@ suspend fun Synchronizer.changeListSync(
  * Attempts [block], returning a successful [NetworkResponse] if it succeeds, otherwise a [NetworkResponse.Failure]
  * taking care not to break structured concurrency
  */
-private suspend fun <T> suspendRunCatching(block: suspend () -> T): kotlin.Result<T> = try {
-    kotlin.Result.success(block())
+private suspend fun <T> suspendRunCatching(block: suspend () -> T): Result<T> = try {
+    Result.success(block())
 } catch (cancellationException: CancellationException) {
     throw cancellationException
 } catch (exception: Exception) {
@@ -63,6 +63,6 @@ private suspend fun <T> suspendRunCatching(block: suspend () -> T): kotlin.Resul
         "Exception in suspendRunCatchingBlock: ${exception.message} Returning failure Result",
         exception,
     )
-    kotlin.Result.failure(exception)
+    Result.failure(exception)
 }
 

@@ -1,4 +1,4 @@
-package com.example.myweatherapp.Services.notifications
+package com.example.myweatherapp.ui.designsystem
 
 import android.Manifest
 import androidx.compose.runtime.Composable

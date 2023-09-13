@@ -47,7 +47,7 @@ fun TempWidget(modifier: Modifier = Modifier, forecast: WeatherForecast) {
         AnimatedContent(
             targetState = forecast, transitionSpec = {
                 (scaleIn()+ fadeIn(tween(fadeInTime,0))).togetherWith(fadeOut(tween(0, 0)))
-            }
+            }, label = ""
         )
         { animatedForecast ->
             Column(

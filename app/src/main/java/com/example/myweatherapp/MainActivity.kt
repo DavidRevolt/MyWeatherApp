@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import com.example.myweatherapp.Services.NetworkMonitor.NetworkMonitorServiceImpl
 import com.example.myweatherapp.data.userDataRepository.UserDataRepository
+import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorServiceImpl
 import com.example.myweatherapp.sync.SyncManager
 import com.example.myweatherapp.ui.WeatherApp
 import com.example.myweatherapp.ui.theme.MyWeatherAppTheme

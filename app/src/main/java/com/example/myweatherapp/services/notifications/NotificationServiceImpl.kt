@@ -1,4 +1,4 @@
-package com.example.myweatherapp.Services.notifications
+package com.example.myweatherapp.services.notifications
 
 import android.app.Notification
 import android.app.Notification.CATEGORY_SERVICE

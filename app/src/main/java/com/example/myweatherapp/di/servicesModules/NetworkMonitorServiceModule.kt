@@ -1,7 +1,7 @@
 package com.example.myweatherapp.di.servicesModules
 
-import com.example.myweatherapp.Services.NetworkMonitor.NetworkMonitorService
-import com.example.myweatherapp.Services.NetworkMonitor.NetworkMonitorServiceImpl
+import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorService
+import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

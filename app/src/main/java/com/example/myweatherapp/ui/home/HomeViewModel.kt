@@ -2,16 +2,15 @@ package com.example.myweatherapp.ui.home
 
 import android.Manifest
 import androidx.annotation.RequiresPermission
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myweatherapp.Services.location.LocationService
-import com.example.myweatherapp.data.NetworkResponse
-import com.example.myweatherapp.data.Synchronizer
+import com.example.myweatherapp.common.ScreenEvent
 import com.example.myweatherapp.data.userDataRepository.UserDataRepository
+import com.example.myweatherapp.data.utils.NetworkResponse
+import com.example.myweatherapp.data.utils.Synchronizer
 import com.example.myweatherapp.data.weatherRepository.WeatherRepository
 import com.example.myweatherapp.model.Weather
-import com.example.myweatherapp.ui.components.ScreenEvent
+import com.example.myweatherapp.services.location.LocationService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -29,7 +28,6 @@ class HomeViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository,
     private val userDataRepository: UserDataRepository,
     private val lastLocationService: LocationService,
-    savedStateHandle: SavedStateHandle // needed for getting navigation args
 ) : ViewModel(), Synchronizer {
 
     //the query from navigation args, Not in use in favor of DataStore

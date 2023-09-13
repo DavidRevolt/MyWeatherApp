@@ -54,14 +54,17 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.myweatherapp.R
+import com.example.myweatherapp.common.ScreenEvent
 import com.example.myweatherapp.model.Weather
-import com.example.myweatherapp.ui.components.LoadingWheel
-import com.example.myweatherapp.ui.components.ScreenEvent
+import com.example.myweatherapp.ui.designsystem.LoadingWheel
 import com.example.myweatherapp.ui.home.components.AppBarDropDownMenu
 import com.example.myweatherapp.ui.home.components.InfoCard
 import com.example.myweatherapp.ui.home.components.TempWidget
 import com.example.myweatherapp.ui.home.components.WeatherTopAppBar
 import com.example.myweatherapp.ui.home.components.WeeklyForecast
+import com.example.myweatherapp.ui.designsystem.homePagerDotColor
+import com.example.myweatherapp.ui.designsystem.homePagerDotCurrentColor
+import com.example.myweatherapp.ui.designsystem.homePullToRefreshTextStyle
 import com.github.fengdai.compose.pulltorefresh.PullToRefresh
 import com.github.fengdai.compose.pulltorefresh.rememberPullToRefreshState
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -223,7 +226,7 @@ private fun HomeScreenContent(
     ) {
         repeat(pageCount) { iteration ->
             val color =
-                if (pagerState.currentPage == iteration) Color.Black else Color.LightGray
+                if (pagerState.currentPage == iteration) homePagerDotCurrentColor else homePagerDotColor
             Box(
                 modifier = Modifier
                     .padding(2.dp)
@@ -236,7 +239,8 @@ private fun HomeScreenContent(
 
     PullToRefresh(
         state = rememberPullToRefreshState(isRefreshing = isRefreshing),
-        onRefresh = onPullToRefresh
+        onRefresh = onPullToRefresh,
+        textStyle = homePullToRefreshTextStyle
     ) {
         LazyColumn(
             modifier = Modifier

@@ -2,12 +2,12 @@ package com.example.myweatherapp.ui.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myweatherapp.data.NetworkResponse
+import com.example.myweatherapp.common.ScreenEvent
 import com.example.myweatherapp.data.recentSearchRepository.RecentSearchRepository
+import com.example.myweatherapp.data.utils.NetworkResponse
 import com.example.myweatherapp.data.weatherRepository.WeatherRepository
 import com.example.myweatherapp.model.RecentSearchQuery
 import com.example.myweatherapp.model.Weather
-import com.example.myweatherapp.ui.components.ScreenEvent
 import com.example.myweatherapp.ui.home.WeatherUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

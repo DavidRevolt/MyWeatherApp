@@ -1,4 +1,4 @@
-package com.example.myweatherapp.ui.components
+package com.example.myweatherapp.ui.designsystem
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.RepeatMode
@@ -54,7 +54,7 @@ fun LoadingIndicator(text: String = "Loading", dimAmount:Float = 0.5f) {
         dialogWindowProvider.window.setGravity(Gravity.CENTER) */
 
         //add this line to edit background dim
-        (LocalView.current.parent as DialogWindowProvider)?.window?.setDimAmount(dimAmount)
+        (LocalView.current.parent as DialogWindowProvider).window.setDimAmount(dimAmount)
 
         Box(
             contentAlignment = Alignment.Center, modifier = Modifier

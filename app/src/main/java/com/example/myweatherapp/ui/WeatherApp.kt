@@ -1,6 +1,7 @@
 package com.example.myweatherapp.ui
 
 import android.app.Activity
+import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -23,19 +24,22 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.myweatherapp.R
-import com.example.myweatherapp.Services.NetworkMonitor.NetworkMonitorService
-import com.example.myweatherapp.Services.notifications.RequestNotificationPermission
 import com.example.myweatherapp.data.userDataRepository.UserDataRepository
 import com.example.myweatherapp.navigation.WeatherNavigation
+import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorService
 import com.example.myweatherapp.sync.SyncManager
+import com.example.myweatherapp.ui.designsystem.RequestNotificationPermission
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
@@ -56,7 +60,7 @@ fun WeatherApp(
     val snackbarHostState = remember { SnackbarHostState() }
 
     WeatherBackground(
-        backgroundImage = painterResource(id = R.drawable.wallpaper6)
+        backgroundImage = painterResource(id = R.drawable.background)
     ) {
 
         val notConnectedMessage = stringResource(R.string.not_connected)
@@ -69,14 +73,9 @@ fun WeatherApp(
             }
         }
 
-        val view = LocalView.current
-        val window = (view.context as Activity).window
-        val navBarColor: Color by animateColorAsState(
-            if (appState.shouldShowTransparentSystemBars) Color.Transparent else Color.White,
-            animationSpec = tween(200, easing = LinearEasing)
-        )
-
-        window.navigationBarColor = navBarColor.toArgb()
+        val systemUiController = rememberSystemUiController()
+        systemUiController.setSystemBarsColor(
+            color = if (appState.shouldShowTransparentSystemBars) Color.Transparent else Color.White)
 
         Scaffold(
             containerColor = Color.Transparent,
@@ -117,7 +116,7 @@ private fun WeatherBackground(
         //Set Background Image
         if (backgroundImage != null) {
             Image(
-                painter = painterResource(id = R.drawable.wallpaper6),
+                painter = backgroundImage,
                 modifier = Modifier.fillMaxSize(),
                 contentDescription = stringResource(R.string.app_background_image),
                 contentScale = ContentScale.FillBounds
@@ -126,4 +125,3 @@ private fun WeatherBackground(
         content()
     }
 }
-

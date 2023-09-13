@@ -1,4 +1,4 @@
-package com.example.myweatherapp.utils
+package com.example.myweatherapp.ui.designsystem
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

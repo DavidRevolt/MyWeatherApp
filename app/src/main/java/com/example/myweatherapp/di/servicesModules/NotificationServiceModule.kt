@@ -1,7 +1,7 @@
 package com.example.myweatherapp.di.servicesModules
 
-import com.example.myweatherapp.Services.notifications.NotificationService
-import com.example.myweatherapp.Services.notifications.NotificationServiceImpl
+import com.example.myweatherapp.services.notifications.NotificationService
+import com.example.myweatherapp.services.notifications.NotificationServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

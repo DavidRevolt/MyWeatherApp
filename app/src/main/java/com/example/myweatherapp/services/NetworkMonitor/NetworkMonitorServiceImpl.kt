@@ -1,4 +1,4 @@
-package com.example.myweatherapp.Services.NetworkMonitor
+package com.example.myweatherapp.services.NetworkMonitor
 
 import android.content.Context
 import android.net.ConnectivityManager

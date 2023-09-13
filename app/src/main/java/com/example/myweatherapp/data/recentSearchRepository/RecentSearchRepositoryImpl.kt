@@ -2,7 +2,7 @@ package com.example.myweatherapp.data.recentSearchRepository
 
 import com.example.myweatherapp.data.recentSearchRepository.local.RecentSearchQueryDao
 import com.example.myweatherapp.data.recentSearchRepository.local.model.RecentSearchQueryEntity
-import com.example.myweatherapp.data.recentSearchRepository.local.model.asExternalModel
+import com.example.myweatherapp.data.recentSearchRepository.modelMappers.asExternalModel
 import com.example.myweatherapp.model.RecentSearchQuery
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

@@ -19,12 +19,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.myweatherapp.R
-import com.example.myweatherapp.ui.components.LoadingIndicator
-import com.example.myweatherapp.ui.components.LoadingWheel
-import com.example.myweatherapp.ui.components.ScreenEvent
+import com.example.myweatherapp.common.ScreenEvent
+import com.example.myweatherapp.ui.designsystem.GetRowColors
+import com.example.myweatherapp.ui.designsystem.LoadingIndicator
+import com.example.myweatherapp.ui.designsystem.LoadingWheel
 import com.example.myweatherapp.ui.search.components.WeatherPreviewCard
 import com.example.myweatherapp.ui.search.components.WeatherSearchBar
-import com.example.myweatherapp.utils.GetRowColors
 import retrofit2.HttpException
 
 

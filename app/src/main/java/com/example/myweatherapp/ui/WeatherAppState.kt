@@ -7,8 +7,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.myweatherapp.Services.NetworkMonitor.NetworkMonitorService
 import com.example.myweatherapp.data.userDataRepository.UserDataRepository
+import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorService
 import com.example.myweatherapp.sync.SyncManager
 import com.example.myweatherapp.ui.search.searchRoute
 import kotlinx.coroutines.CoroutineScope

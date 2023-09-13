@@ -2,8 +2,8 @@ package com.example.myweatherapp.data.weatherRepository.local.model
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.example.myweatherapp.model.WeatherForecast
 
 @Entity(
     tableName = "weatherForecast",
@@ -13,7 +13,8 @@ import com.example.myweatherapp.model.WeatherForecast
         parentColumns = arrayOf("weatherId"),
         childColumns = arrayOf("weatherCreatorId"),
         onDelete = ForeignKey.CASCADE // children will be automatically deleted if parent deleted
-    )],
+    )], indices = [Index("weatherCreatorId")]
+
 )
 data class WeatherForecastEntity(
     @PrimaryKey(autoGenerate = true) // network model doesn't come with id's
@@ -32,20 +33,4 @@ data class WeatherForecastEntity(
     val iconId: String,
     val cloudiness: String,
     val probabilityOfPrecipitation: String
-)
-
-fun WeatherForecastEntity.asExternalModel() = WeatherForecast(
-    currentTemp = currentTemp,
-    maxTemp = maxTemp,
-    minTemp = minTemp,
-    weatherDescription = weatherDescription, //Sky Is Clear
-    date = date, //Fri, Aug 4
-    atmosphericPressure = atmosphericPressure,
-    humidity = humidity,
-    windSpeed = windSpeed,
-    sunrise = sunrise,
-    sunset = sunset,
-    iconId = iconId,
-    cloudiness = cloudiness,
-    probabilityOfPrecipitation = probabilityOfPrecipitation
 )

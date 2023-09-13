@@ -1,7 +1,7 @@
 package com.example.myweatherapp.di.servicesModules
 
-import com.example.myweatherapp.Services.location.LocationService
-import com.example.myweatherapp.Services.location.LocationServiceImpl
+import com.example.myweatherapp.services.location.LocationService
+import com.example.myweatherapp.services.location.LocationServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

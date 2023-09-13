@@ -1,14 +1,14 @@
 package com.example.myweatherapp.data.weatherRepository
 
 import android.location.Location
-import com.example.myweatherapp.data.NetworkResponse
-import com.example.myweatherapp.data.Synchronizer
-import com.example.myweatherapp.data.changeListSync
+import com.example.myweatherapp.data.utils.NetworkResponse
+import com.example.myweatherapp.data.utils.Synchronizer
+import com.example.myweatherapp.data.utils.changeListSync
 import com.example.myweatherapp.data.weatherRepository.local.WeatherDao
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherWithWeatherForecast
-import com.example.myweatherapp.data.weatherRepository.local.model.asExternalModel
+import com.example.myweatherapp.data.weatherRepository.modelMappers.asEntity
+import com.example.myweatherapp.data.weatherRepository.modelMappers.asExternalModel
 import com.example.myweatherapp.data.weatherRepository.network.WeatherNetworkDataSource
-import com.example.myweatherapp.data.weatherRepository.network.model.asEntity
 import com.example.myweatherapp.model.Weather
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -71,7 +71,3 @@ class WeatherRepositoryImpl @Inject constructor(
         )
     }
 }
-
-
-
-

@@ -1,4 +1,4 @@
-package com.example.myweatherapp.utils
+package com.example.myweatherapp.data.utils
 
 import androidx.room.TypeConverter
 import java.time.Instant

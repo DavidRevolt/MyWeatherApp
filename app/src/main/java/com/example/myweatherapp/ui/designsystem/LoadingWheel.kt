@@ -1,4 +1,4 @@
-package com.example.myweatherapp.ui.components
+package com.example.myweatherapp.ui.designsystem
 
 
 import androidx.compose.animation.animateColor

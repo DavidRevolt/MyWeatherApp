@@ -37,7 +37,7 @@ fun PullToRefreshIndicator(
     refreshTriggerDistance: Dp,
     refreshingOffset: Dp,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = TextStyle.Default.copy(color = Color.Gray, fontSize = 14.sp),
+    textStyle: TextStyle,
 ) {
     val refreshTriggerPx = with(LocalDensity.current) { refreshTriggerDistance.toPx() }
     val refreshingOffsetPx = with(LocalDensity.current) { refreshingOffset.toPx() }

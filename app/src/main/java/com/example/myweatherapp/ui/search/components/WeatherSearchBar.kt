@@ -29,7 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.myweatherapp.R
-import com.example.myweatherapp.ui.components.LoadingWheel
+import com.example.myweatherapp.ui.designsystem.LoadingWheel
 import com.example.myweatherapp.ui.search.RecentSearchQueriesUiState
 
 
@@ -85,7 +85,7 @@ fun WeatherSearchBar(
         // Active Search Content: Recent Searches
         when (recentSearchQueriesUiState) {
             is RecentSearchQueriesUiState.Success -> {
-                (recentSearchQueriesUiState as RecentSearchQueriesUiState.Success).recentQueries.forEach {
+                (recentSearchQueriesUiState).recentQueries.forEach {
                     Row(modifier = Modifier
                         .fillMaxWidth()
                         .padding(all = 14.dp)

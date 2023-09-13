@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
+import com.example.myweatherapp.datastore.UserPreferencesDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,4 +27,8 @@ object DataStoreModule{
             ),
             produceFile = { context.preferencesDataStoreFile("user_preferences") }
         )
+
+    @Singleton
+    @Provides
+    fun provideUserPreferencesDataSource(userPreferences: DataStore<Preferences>) = UserPreferencesDataSource(userPreferences)
 }

@@ -8,9 +8,9 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkerParameters
 import com.example.myweatherapp.R
-import com.example.myweatherapp.Services.notifications.NotificationService
-import com.example.myweatherapp.data.Synchronizer
+import com.example.myweatherapp.data.utils.Synchronizer
 import com.example.myweatherapp.data.weatherRepository.WeatherRepository
+import com.example.myweatherapp.services.notifications.NotificationService
 import com.example.myweatherapp.sync.SyncConstraints
 import com.example.myweatherapp.sync.syncForegroundInfo
 import dagger.assisted.Assisted
