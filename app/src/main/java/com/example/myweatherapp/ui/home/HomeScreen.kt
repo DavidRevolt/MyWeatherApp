@@ -229,7 +229,7 @@ private fun HomeScreenContent(
                 if (pagerState.currentPage == iteration) homePagerDotCurrentColor else homePagerDotColor
             Box(
                 modifier = Modifier
-                    .padding(2.dp)
+                    .padding(1.dp)
                     .clip(CircleShape)
                     .background(color)
                     .size(5.dp)
@@ -247,13 +247,13 @@ private fun HomeScreenContent(
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            contentPadding = PaddingValues(8.dp)
+            contentPadding = PaddingValues(8.dp, bottom = 50.dp)
         ) {
             item {
                 TempWidget(
                     modifier = Modifier
                         .padding(40.dp)
-                        .padding(bottom = 90.dp)
+                        .padding(top = 70.dp,bottom = 90.dp)
                         .size(250.dp), weatherList[pagerState.currentPage].weatherForecast[0]
                 )
             }

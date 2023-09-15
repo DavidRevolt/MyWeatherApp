@@ -25,8 +25,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.example.myweatherapp.R
-import com.example.myweatherapp.ui.designsystem.homeAppBarIconTint
-import com.example.myweatherapp.ui.designsystem.homeAppBarTextStyle
+import com.example.myweatherapp.ui.designsystem.lightAppBarIconTint
+import com.example.myweatherapp.ui.designsystem.lightAppBarTextStyle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,7 +48,7 @@ fun WeatherTopAppBar(
         title = {
             Text(
                 text = title,
-                style = homeAppBarTextStyle
+                style = lightAppBarTextStyle
             )
         },
         modifier = modifier,
@@ -57,7 +57,7 @@ fun WeatherTopAppBar(
                 Icon(
                     imageVector = navigationIcon,
                     contentDescription = navigationIconContentDescription,
-                    tint = homeAppBarIconTint,
+                    tint = lightAppBarIconTint,
                 )
             }
         },
@@ -66,7 +66,7 @@ fun WeatherTopAppBar(
                 Icon(
                     imageVector = gpsIcon,
                     contentDescription = gpsIconContentDescription,
-                    tint = homeAppBarIconTint
+                    tint = lightAppBarIconTint
                 )
             }
 
@@ -74,7 +74,7 @@ fun WeatherTopAppBar(
                 Icon(
                     imageVector = searchIcon,
                     contentDescription = searchIconContentDescription,
-                    tint = homeAppBarIconTint,
+                    tint = lightAppBarIconTint,
                 )
             }
         },

@@ -1,13 +1,20 @@
 package com.example.myweatherapp.data.weatherRepository.modelMappers
 
+
+
+
+import android.util.Log
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherEntity
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherForecastEntity
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherWithWeatherForecast
 import com.example.myweatherapp.data.weatherRepository.network.model.WeatherNetwork
 import com.example.myweatherapp.model.Weather
 import com.example.myweatherapp.model.WeatherForecast
+import java.text.DateFormat
 import java.text.SimpleDateFormat
+
 import java.time.Instant
+import java.util.Locale
 
 
 fun WeatherWithWeatherForecast.asExternalModel() = Weather(
@@ -51,7 +58,7 @@ fun WeatherNetwork.asEntity() = WeatherWithWeatherForecast(
             currentTemp = formatDecimals(it.temp.day),
             maxTemp = formatDecimals(it.temp.max),
             minTemp = formatDecimals(it.temp.min),
-            weatherDescription = it.weather[0].description, //Sky Is Clear
+            weatherDescription = it.weather[0].main, //.description = Sky Is Clear, .main = Clear
             date = formatDate(it.dt), //Fri, Aug 4
             atmosphericPressure = it.pressure.toString(),
             humidity = it.humidity.toString(),
@@ -73,9 +80,10 @@ fun formatDate(timestamp: Int): String {
 }
 
 fun formatTime(timestamp: Int): String {
-    val sdf = SimpleDateFormat("hh:mm:aa")
+    val sdf = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.US)
     val date = java.util.Date(timestamp.toLong() * 1000)
-
+    Log.d("AppLog","TEST" )
+    Log.d("AppLog",sdf.format(date) )
     return sdf.format(date)
 }
 

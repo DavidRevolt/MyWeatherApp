@@ -8,7 +8,6 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -16,10 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.example.myweatherapp.R
+import com.example.myweatherapp.ui.designsystem.aboutTextStyle
+import com.example.myweatherapp.ui.designsystem.lightAppBarIconTint
+import com.example.myweatherapp.ui.designsystem.lightAppBarTextStyle
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +34,7 @@ fun AboutScreen(onBackClick: () -> Unit) {
             title = {
                 Text(
                     text = stringResource(R.string.aboutScreenTitle),
-                    style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    style = lightAppBarTextStyle
                 )
             },
             actions = {
@@ -43,12 +42,12 @@ fun AboutScreen(onBackClick: () -> Unit) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = stringResource(R.string.go_back),
-                        tint = MaterialTheme.colorScheme.onSurface
+                        tint = lightAppBarIconTint
                     )
                 }
             },
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = Color.Transparent)
         )
-        Text(text = "Using OpenWeather API: Daily Forecast 7-days")
+        Text(text = "Using OpenWeather API: Daily Forecast 7-days", style = aboutTextStyle)
     }
 }

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MyWeatherApp</string>
-    <string name="cptr_pull_to_refresh">Pull to refresh</string>
     <string name="cptr_release_to_refresh">Release to refresh</string>
     <string name="cptr_refreshing">Refreshing…</string>
 
@@ -35,8 +34,8 @@
     <string name="pressure">Pressure</string>
     <string name="wind_speed">Wind speed</string>
     <string name="chance_of_rain">Chance of rain</string>
-    <string name="sun_rise">Sun rise:</string>
-    <string name="sun_set">Sun set:</string>
+    <string name="sun_rise">Sun rise</string>
+    <string name="sun_set">Sun set</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="permission_required">Permission required</string>
     <string name="go_to_settings">Go to settings</string>
@@ -45,6 +44,7 @@
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
     <string name="searchplaceHolder">e.g Rehovot, Israel</string>
+    <string name="cptr_pull_to_refresh">Pull to refresh</string>
 
 
 </resources>

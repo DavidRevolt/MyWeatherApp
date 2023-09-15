@@ -5,7 +5,9 @@ import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,6 +33,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.myweatherapp.R
@@ -38,6 +41,7 @@ import com.example.myweatherapp.data.userDataRepository.UserDataRepository
 import com.example.myweatherapp.navigation.WeatherNavigation
 import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorService
 import com.example.myweatherapp.sync.SyncManager
+import com.example.myweatherapp.ui.designsystem.BlackScrim
 import com.example.myweatherapp.ui.designsystem.RequestNotificationPermission
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -72,14 +76,12 @@ fun WeatherApp(
                 )
             }
         }
-
         val systemUiController = rememberSystemUiController()
-        systemUiController.setSystemBarsColor(
-            color = if (appState.shouldShowTransparentSystemBars) Color.Transparent else Color.White)
+        systemUiController.systemBarsDarkContentEnabled =!appState.shouldShowTransparentSystemBars
 
         Scaffold(
             containerColor = Color.Transparent,
-            contentWindowInsets = WindowInsets.navigationBars,
+            contentWindowInsets = WindowInsets(0, 0, 0, 0),
             snackbarHost = { SnackbarHost(snackbarHostState) },
         ) { innerPadding ->
             Column(

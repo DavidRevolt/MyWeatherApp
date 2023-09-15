@@ -2,6 +2,7 @@ package com.example.myweatherapp.ui.home.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import coil.compose.AsyncImage
@@ -10,13 +11,15 @@ import com.example.myweatherapp.R
 import com.example.myweatherapp.utils.Constants
 
 @Composable
-fun WeatherIcon(icon: String,modifier: Modifier) {
+fun WeatherIcon(icon: String,modifier: Modifier, colorFilter: ColorFilter? = null) {
     AsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
-            .data(Constants.IMG_URL + icon + ".png")
+            .data(Constants.ICON_URL + icon + "@2x.png")
             .crossfade(true)
             .build(),
+
         contentDescription = stringResource(R.string.weatherIcon),
-        modifier = modifier
+        modifier = modifier,
+        colorFilter = colorFilter
     )
 }

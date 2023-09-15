@@ -59,7 +59,7 @@ fun MyWeatherAppTheme(
             val window = (view.context as Activity).window
             //window.statusBarColor = colorScheme.primary.toArgb()
             window.statusBarColor = android.graphics.Color.TRANSPARENT // here change the color
-            //window.navigationBarColor = android.graphics.Color.TRANSPARENT  // here change the color
+            window.navigationBarColor = android.graphics.Color.TRANSPARENT  // here change the color
 
             // here change the status bar element color
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme

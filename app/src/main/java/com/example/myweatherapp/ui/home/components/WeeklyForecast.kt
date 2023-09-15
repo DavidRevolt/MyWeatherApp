@@ -24,14 +24,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.example.myweatherapp.R
 import com.example.myweatherapp.model.WeatherForecast
+import com.example.myweatherapp.ui.designsystem.homeCardColor
+import com.example.myweatherapp.ui.designsystem.homeCardDayStyle
+import com.example.myweatherapp.ui.designsystem.homeCardIconColorFilter
+import com.example.myweatherapp.ui.designsystem.homeCardMaxTempStyle
+import com.example.myweatherapp.ui.designsystem.homeCardMinTempStyle
+import com.example.myweatherapp.ui.designsystem.homeCardHeadersColor
+import com.example.myweatherapp.ui.designsystem.homeCardTitleStyle
 import kotlin.text.Typography.degree
 
 
@@ -40,44 +45,47 @@ fun WeeklyForecast(modifier: Modifier = Modifier, forecastList: List<WeatherFore
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.5f)),
+        colors = CardDefaults.cardColors(containerColor = homeCardColor)
     ) {
         Column(
-            modifier =Modifier.padding(4.dp),
+            modifier = Modifier.padding(4.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Box(modifier = Modifier.size(24.dp), contentAlignment = Alignment.Center) {
-                        Icon(imageVector = Icons.Rounded.CalendarMonth , contentDescription ="",modifier = Modifier.size(20.dp) )
-                    }
-                    Text(
-                        stringResource(R.string.forecast),
-                        modifier = Modifier
-                            .padding(start = 5.dp)
-                            .weight(3f),
-                        color = Color.Black,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    Spacer(modifier = Modifier.weight(2f))
-                    Text(
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(start = 5.dp)
-                            .weight(1.5f),
-                        text = stringResource(R.string.max_min),
-                        color = Color.Black,
-                        fontWeight = FontWeight.SemiBold
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Box(modifier = Modifier.size(24.dp), contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = Icons.Rounded.CalendarMonth,
+                        contentDescription = "",
+                        modifier = Modifier.size(20.dp),
+                        tint = homeCardHeadersColor
                     )
                 }
-                Row {
-                    Divider()
-                }
+                Text(
+                    stringResource(R.string.forecast),
+                    modifier = Modifier
+                        .padding(start = 5.dp)
+                        .weight(3f),
+                    style = homeCardTitleStyle
+                )
+                Spacer(modifier = Modifier.weight(2f))
+                Text(
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(start = 5.dp)
+                        .weight(1.5f),
+                    text = stringResource(R.string.max_min),
+                    style = homeCardTitleStyle
+                )
+            }
+            Row {
+                Divider(color = homeCardHeadersColor)
+            }
 
-            forecastList.forEach { weather ->WeatherDetailRow(weather) }
+            forecastList.forEach { weather -> WeatherDetailRow(weather) }
         }
     }
 }
@@ -90,7 +98,11 @@ fun WeatherDetailRow(weather: WeatherForecast) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Box() {
-            WeatherIcon(weather.iconId, modifier = Modifier.size(24.dp))
+            WeatherIcon(
+                weather.iconId,
+                modifier = Modifier.size(24.dp),
+                colorFilter = homeCardIconColorFilter
+            )
         }
 
         Text(
@@ -98,7 +110,8 @@ fun WeatherDetailRow(weather: WeatherForecast) {
                 .split(",")[0],
             modifier = Modifier
                 .padding(start = 5.dp)
-                .weight(3f)
+                .weight(3f),
+            style = homeCardDayStyle
         )
 
         Text(
@@ -118,17 +131,12 @@ fun WeatherDetailRow(weather: WeatherForecast) {
                 .weight(1.5f),
             text = buildAnnotatedString {
                 withStyle(
-                    style = SpanStyle(
-                        color = Color.Blue.copy(alpha = 0.7f),
-                        fontWeight = FontWeight.SemiBold
-                    )
+                    style = homeCardMaxTempStyle
                 ) {
                     append(weather.maxTemp + degree)
                 }
                 withStyle(
-                    style = SpanStyle(
-                        color = Color.Gray.copy(alpha = 0.8f)
-                    )
+                    style = homeCardMinTempStyle
                 ) {
                     append(weather.minTemp + degree)
                 }

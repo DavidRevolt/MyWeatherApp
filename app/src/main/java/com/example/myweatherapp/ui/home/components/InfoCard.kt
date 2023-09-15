@@ -13,13 +13,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.myweatherapp.ui.designsystem.homeCardColor
+import com.example.myweatherapp.ui.designsystem.homeCardHeadersColor
+import com.example.myweatherapp.ui.designsystem.homeInfoCardEndContentStyle
+import com.example.myweatherapp.ui.designsystem.homeInfoCardSecondaryEndContentStyle
+import com.example.myweatherapp.ui.designsystem.homeInfoCardStartContentStyle
+import com.example.myweatherapp.ui.designsystem.homeInfoCardTitleStyle
 
 //Title example: [Day, Temp, max/min]
 //content example: [Pressure, 32, m/bar]
@@ -29,29 +32,15 @@ fun InfoCard(
     title: Triple<String?, String?, String?>? =  null,
     content: List<Triple<String, String, String?>> = emptyList(),
     useDivider: Boolean = true,
-    titleStyle: SpanStyle = SpanStyle(
-        color = Color.Black,
-        fontWeight = FontWeight.SemiBold
-    ),
-    startContentStyle: SpanStyle = SpanStyle(
-        color = Color.Black,
-        fontSize = 15.sp
-    ),
-    endContentStyle: SpanStyle = SpanStyle(
-        color = Color.Black.copy(alpha = 0.7f),
-        fontWeight = FontWeight.Bold,
-        fontSize = 15.sp
-    ),
-    secondaryEndContentStyle: SpanStyle = SpanStyle(
-        color = Color.Gray.copy(alpha = 0.7f),
-        fontWeight = FontWeight.Bold,
-        fontSize = 10.sp
-    ),
+    titleStyle: SpanStyle = homeInfoCardTitleStyle,
+    startContentStyle: SpanStyle = homeInfoCardStartContentStyle,
+    endContentStyle: SpanStyle = homeInfoCardEndContentStyle,
+    secondaryEndContentStyle: SpanStyle = homeInfoCardSecondaryEndContentStyle,
 ) {
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.5f)),
+        colors = CardDefaults.cardColors(containerColor = homeCardColor),
     ) {
         Column(
             modifier = Modifier.padding(8.dp),
@@ -68,7 +57,7 @@ fun InfoCard(
                     titleStyle,
                     secondaryEndContentStyle
                 )
-                Divider()
+                Divider(color = homeCardHeadersColor)
             }
 
             //Set Content:
@@ -85,7 +74,7 @@ fun InfoCard(
                 )
                 while (contentIterator.hasNext()) {
                     data = contentIterator.next()
-                    if(useDivider) Divider()
+                    if(useDivider) Divider(color = homeCardHeadersColor)
                     InfoCardRow(
                         data.first,
                         data.second,
@@ -117,7 +106,7 @@ fun InfoCardRow(
         horizontalArrangement = Arrangement.SpaceBetween //How To Spread The Text In The Row
     ) {
         startText?.let {
-            Text(
+            Text(maxLines = 1,
                 modifier = Modifier.padding(start = 5.dp),
                 text = buildAnnotatedString {
                     withStyle(
@@ -129,7 +118,7 @@ fun InfoCardRow(
             )
         }
         endText?.let {
-            Text(
+            Text(maxLines = 1,
                 modifier = Modifier
                     .padding(end = 5.dp),
                 text = buildAnnotatedString {
@@ -147,7 +136,6 @@ fun InfoCardRow(
                     }
                 })
         }
-
     }
 }
 

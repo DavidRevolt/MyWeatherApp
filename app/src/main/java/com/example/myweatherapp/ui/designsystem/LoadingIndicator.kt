@@ -82,6 +82,6 @@ fun LoadingIndicator(text: String = "Loading", dimAmount:Float = 0.5f) {
 
 @Preview
 @Composable
-fun LoadingIndicatorPreview() {
+private fun LoadingIndicatorPreview() {
     LoadingIndicator(text = "Loading...")
 }

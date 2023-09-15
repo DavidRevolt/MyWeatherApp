@@ -23,13 +23,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.myweatherapp.model.WeatherForecast
+import com.example.myweatherapp.ui.designsystem.homeTempWidgetCurrentTempStyle
+import com.example.myweatherapp.ui.designsystem.homeTempWidgetDateStyle
+import com.example.myweatherapp.ui.designsystem.homeTempWidgetWeatherDescriptionStyle
 import kotlin.text.Typography.degree
 
 
@@ -46,7 +45,7 @@ fun TempWidget(modifier: Modifier = Modifier, forecast: WeatherForecast) {
     ) {
         AnimatedContent(
             targetState = forecast, transitionSpec = {
-                (scaleIn()+ fadeIn(tween(fadeInTime,0))).togetherWith(fadeOut(tween(0, 0)))
+                (scaleIn() + fadeIn(tween(fadeInTime, 0))).togetherWith(fadeOut(tween(0, 0)))
             }, label = ""
         )
         { animatedForecast ->
@@ -59,30 +58,63 @@ fun TempWidget(modifier: Modifier = Modifier, forecast: WeatherForecast) {
             ) {
                 Text(
                     text = animatedForecast.currentTemp + degree,
-                    style = TextStyle(
-                        fontWeight = FontWeight.SemiBold,
-                        textAlign = TextAlign.Center,
-                        color = Color.DarkGray.copy(0.9f),
-                        fontSize = 120.sp
+                    style = homeTempWidgetCurrentTempStyle,
+                    modifier = Modifier.animateEnterExit(
+                        enter = slideInVertically(
+                            animationSpec = tween(
+                                slideInTime,
+                                0,
+                                FastOutSlowInEasing
+                            )
+                        )
                     ),
-                    modifier = Modifier.animateEnterExit(enter = slideInVertically(animationSpec = tween(slideInTime,0,FastOutSlowInEasing))),
                 )
-
                 Text(
                     text = animatedForecast.weatherDescription,
-                    fontStyle = FontStyle.Italic,
-                    color = Color.DarkGray.copy(0.9f),
-                    modifier = Modifier.animateEnterExit(enter = slideInHorizontally(animationSpec = tween(slideInTime,0,FastOutSlowInEasing)))
+                    style = homeTempWidgetWeatherDescriptionStyle,
+                    modifier = Modifier.animateEnterExit(
+                        enter = slideInHorizontally(
+                            animationSpec = tween(slideInTime, 0, FastOutSlowInEasing)
+                        )
+                    )
                 )
                 Text(
                     text = animatedForecast.date,
-                    fontWeight = FontWeight.Bold,
-                    fontStyle = FontStyle.Italic,
-                    modifier = Modifier.padding(0.dp).animateEnterExit(enter = slideInHorizontally(animationSpec = tween(slideInTime,0,FastOutSlowInEasing), initialOffsetX = {it/2})),
-                    color = Color.DarkGray.copy(0.9f)
+                    style = homeTempWidgetDateStyle,
+                    modifier = Modifier
+                        .padding(0.dp)
+                        .animateEnterExit(
+                            enter = slideInHorizontally(
+                                animationSpec = tween(
+                                    slideInTime,
+                                    0,
+                                    FastOutSlowInEasing
+                                ), initialOffsetX = { it / 2 })
+                        ),
                 )
             }
         }
     }
 }
 
+@Preview
+@Composable
+private fun WeatherWidgetPreview() {
+    TempWidget(
+        modifier = Modifier.fillMaxWidth(), forecast = WeatherForecast(
+            currentTemp = "31",
+            maxTemp = "40",
+            minTemp = "28",
+            weatherDescription = "Hot",
+            date = "Friday, Sep 15,",
+            atmosphericPressure = "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        )
+    )
+}
