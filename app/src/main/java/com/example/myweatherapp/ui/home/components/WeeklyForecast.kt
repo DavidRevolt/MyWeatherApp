@@ -32,10 +32,10 @@ import com.example.myweatherapp.R
 import com.example.myweatherapp.model.WeatherForecast
 import com.example.myweatherapp.ui.designsystem.homeCardColor
 import com.example.myweatherapp.ui.designsystem.homeCardDayStyle
+import com.example.myweatherapp.ui.designsystem.homeCardHeadersColor
 import com.example.myweatherapp.ui.designsystem.homeCardIconColorFilter
 import com.example.myweatherapp.ui.designsystem.homeCardMaxTempStyle
 import com.example.myweatherapp.ui.designsystem.homeCardMinTempStyle
-import com.example.myweatherapp.ui.designsystem.homeCardHeadersColor
 import com.example.myweatherapp.ui.designsystem.homeCardTitleStyle
 import kotlin.text.Typography.degree
 

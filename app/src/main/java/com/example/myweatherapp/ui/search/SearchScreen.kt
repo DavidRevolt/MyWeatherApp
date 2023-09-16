@@ -20,9 +20,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.myweatherapp.R
 import com.example.myweatherapp.common.ScreenEvent
-import com.example.myweatherapp.ui.designsystem.GetRowColors
 import com.example.myweatherapp.ui.designsystem.LoadingIndicator
 import com.example.myweatherapp.ui.designsystem.LoadingWheel
+import com.example.myweatherapp.ui.designsystem.rowCardsColors
 import com.example.myweatherapp.ui.search.components.WeatherPreviewCard
 import com.example.myweatherapp.ui.search.components.WeatherSearchBar
 import retrofit2.HttpException
@@ -66,7 +66,7 @@ fun SearchScreen(
                             onWeatherClick(weatherId)
                         },
                         swipeToStartFunc = swipeToStartFunc,
-                        colors = GetRowColors()
+                        colors = rowCardsColors
                     )
 
                     if (showLoadingIndicator) {

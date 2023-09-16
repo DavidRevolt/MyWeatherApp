@@ -57,14 +57,14 @@ import com.example.myweatherapp.R
 import com.example.myweatherapp.common.ScreenEvent
 import com.example.myweatherapp.model.Weather
 import com.example.myweatherapp.ui.designsystem.LoadingWheel
+import com.example.myweatherapp.ui.designsystem.homePagerDotColor
+import com.example.myweatherapp.ui.designsystem.homePagerDotCurrentColor
+import com.example.myweatherapp.ui.designsystem.homePullToRefreshTextStyle
 import com.example.myweatherapp.ui.home.components.AppBarDropDownMenu
 import com.example.myweatherapp.ui.home.components.InfoCard
 import com.example.myweatherapp.ui.home.components.TempWidget
 import com.example.myweatherapp.ui.home.components.WeatherTopAppBar
 import com.example.myweatherapp.ui.home.components.WeeklyForecast
-import com.example.myweatherapp.ui.designsystem.homePagerDotColor
-import com.example.myweatherapp.ui.designsystem.homePagerDotCurrentColor
-import com.example.myweatherapp.ui.designsystem.homePullToRefreshTextStyle
 import com.github.fengdai.compose.pulltorefresh.PullToRefresh
 import com.github.fengdai.compose.pulltorefresh.rememberPullToRefreshState
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -75,7 +75,9 @@ import kotlin.math.absoluteValue
 
 
 @SuppressLint("MissingPermission")
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
+@OptIn(
+    ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class,
+)
 @Composable
 fun HomeScreen(
     onAboutClick: () -> Unit,
@@ -89,7 +91,7 @@ fun HomeScreen(
     val appBarTitle = remember { mutableStateOf("") }
     var isRefreshing by remember { mutableStateOf(false) }
     val dropDownMenuExpanded = remember { mutableStateOf(false) }
-    val onPullToRefresh = viewModel::pullToRefresh //TODO Make This Function Active
+    val onPullToRefresh = viewModel::pullToRefresh
     val locationPermissionsState = rememberMultiplePermissionsState(
         listOf(
             Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -106,7 +108,7 @@ fun HomeScreen(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box() {
+        Box {
             WeatherTopAppBar(
                 title = appBarTitle.value,
                 navigationIcon = Icons.Default.MoreVert,
@@ -138,7 +140,7 @@ fun HomeScreen(
                         }
                     } else {
                         onGpsClickLauncher.launch(
-                            locationPermissionsState.permissions.map { it -> it.permission }
+                            locationPermissionsState.permissions.map { it.permission }
                                 .toTypedArray()
                         )
                     }
@@ -148,15 +150,15 @@ fun HomeScreen(
                 expanded = dropDownMenuExpanded,
             )
         }
+
         when (uiState) {
             is WeatherUiState.Success -> {
-                val data = (uiState as WeatherUiState.Success)
                 HomeScreenContent(
-                    data.data,
+                    (uiState as WeatherUiState.Success).data,
                     appBarTitle,
-                    data.weatherIndexToFocusOn,
+                    (uiState as WeatherUiState.Success).weatherIndexToFocusOn,
                     onPullToRefresh,
-                    isRefreshing,
+                    isRefreshing
                 )
             }
 
@@ -183,7 +185,7 @@ fun HomeScreen(
                         is NullPointerException -> context.resources.getString(R.string.something_went_wrong)
                         else -> it.exception?.message
                     }
-                    onShowSnackbar("⚠️ ${message}", null)
+                    onShowSnackbar("⚠️ $message", null)
                 }
             }
         }
@@ -196,7 +198,7 @@ fun HomeScreen(
 private fun HomeScreenContent(
     weatherList: List<Weather>,
     appBarTitle: MutableState<String>,
-    weatherIndexToFocusOn: Int = 0,
+    weatherIndexToFocusOn: Int,
     onPullToRefresh: () -> Unit,
     isRefreshing: Boolean,
 ) {
@@ -205,17 +207,12 @@ private fun HomeScreenContent(
     val pageCount = weatherList.size
 
     //currentPage could be 7 but the data for page 7 can be deleted from other screen, solution:
-    var pagerState = key(weatherList.size) {
+  val pagerState = key(weatherList.size, weatherIndexToFocusOn) {
         rememberPagerState(
             initialPage = minOf(weatherIndexToFocusOn, weatherList.size - 1),
             initialPageOffsetFraction = 0f
         ) { pageCount }
     }
-
-    LaunchedEffect(key1 = weatherIndexToFocusOn) {
-        pagerState.scrollToPage(weatherIndexToFocusOn)
-    }
-
 
     appBarTitle.value =
         weatherList[pagerState.currentPage].city + ", " + weatherList[pagerState.currentPage].country
@@ -253,7 +250,7 @@ private fun HomeScreenContent(
                 TempWidget(
                     modifier = Modifier
                         .padding(40.dp)
-                        .padding(top = 70.dp,bottom = 90.dp)
+                        .padding(top = 70.dp, bottom = 90.dp)
                         .size(250.dp), weatherList[pagerState.currentPage].weatherForecast[0]
                 )
             }

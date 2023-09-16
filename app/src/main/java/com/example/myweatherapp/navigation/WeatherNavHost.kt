@@ -1,8 +1,5 @@
 package com.example.myweatherapp.navigation
 
-import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.core.FastOutLinearInEasing
-import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import com.example.myweatherapp.ui.WeatherAppState
@@ -23,11 +20,7 @@ fun WeatherNavigation(
     NavHost(
         navController = navController,
         startDestination = homeRoute,
-        enterTransition = {slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(350))},
-        exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(250))},
-        popEnterTransition ={slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(350))},
-        popExitTransition = {slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, animationSpec = tween(250,1,
-            FastOutLinearInEasing))}
+
     ) {
         homeScreen(
             onAboutClick = navController::navigateToAbout,

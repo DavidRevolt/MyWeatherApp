@@ -82,7 +82,6 @@ fun WeatherSearchBar(
         )
         //colors = SearchBarDefaults.colors(containerColor = Color.White.copy(alpha = 0.4f))
     ) {
-        // Active Search Content: Recent Searches
         when (recentSearchQueriesUiState) {
             is RecentSearchQueriesUiState.Success -> {
                 (recentSearchQueriesUiState).recentQueries.forEach {

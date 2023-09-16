@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,12 +25,9 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository,
-    private val userDataRepository: UserDataRepository,
+    userDataRepository: UserDataRepository,
     private val lastLocationService: LocationService,
 ) : ViewModel(), Synchronizer {
-
-    //the query from navigation args, Not in use in favor of DataStore
-    //val pageToFocusOn = checkNotNull(savedStateHandle[weatherIdArg])
 
     val weatherUiState = combine( weatherRepository.getAllWeather(), userDataRepository.getWeatherIndexToFocusOn()){
         weatherList, weatherIndexToFocusOn ->
@@ -44,21 +40,6 @@ class HomeViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000),
         initialValue = WeatherUiState.Loading
     )
-
-
-
-    val weatherUiState2 = weatherRepository.getAllWeather()
-        .map { result ->
-            if (result.isEmpty()) WeatherUiState.Empty else WeatherUiState.Success(
-                weatherIndexToFocusOn = 0,
-                data = result
-            )
-        }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = WeatherUiState.Loading
-        )
 
 
     //Send one time event to Screen
@@ -91,8 +72,7 @@ class HomeViewModel @Inject constructor(
             val result = lastLocationService.getLocation()
             val location = result.getOrNull() //Can return null if no last location available
             if (location != null) {
-                val response = weatherRepository.getNewWeather(location)
-                when (response) {
+                when (val response = weatherRepository.getNewWeather(location)) {
                     is NetworkResponse.Success -> {
                         _screenEvent.emit(ScreenEvent.Success("✔️ ${response.data.city} added successfully"))
                     }

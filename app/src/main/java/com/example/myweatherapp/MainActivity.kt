@@ -1,6 +1,7 @@
 package com.example.myweatherapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
@@ -36,6 +37,7 @@ class MainActivity : ComponentActivity() {
             val locale = Locale("en")
             Locale.setDefault(locale)
             MyWeatherAppTheme {
+                Log.d("", "Colors:")
                 WeatherApp(syncManager, networkMonitor, userDataRepository)
             }
         }

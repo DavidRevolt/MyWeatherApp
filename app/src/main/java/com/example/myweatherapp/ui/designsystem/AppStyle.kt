@@ -73,7 +73,7 @@ val homeInfoCardTitleStyle = SpanStyle(
 
 val homeInfoCardStartContentStyle = SpanStyle(
     color = Color.LightGray,
-    fontWeight = FontWeight.Light,
+    fontWeight = FontWeight.Normal,
     fontSize = 14.sp
 )
 

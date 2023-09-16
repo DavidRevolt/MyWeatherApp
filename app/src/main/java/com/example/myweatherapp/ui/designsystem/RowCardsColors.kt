@@ -1,14 +1,13 @@
 package com.example.myweatherapp.ui.designsystem
 
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-@Composable
-fun GetRowColors(): List<Color> = listOf(
-    MaterialTheme.colorScheme.primary,
-    MaterialTheme.colorScheme.secondary,
-    MaterialTheme.colorScheme.tertiary,
-    Color(0xFF447ACE),
-)
 
+val rowCardsColors = listOf(
+    Color(0xFF3D5F90),
+    Color(0xFF555F71),
+    Color(0xFF6E5676),
+    Color(0xFF447ACE),
+    Color(0xFF6650a4),
+    Color(0xFF625b71),
+)

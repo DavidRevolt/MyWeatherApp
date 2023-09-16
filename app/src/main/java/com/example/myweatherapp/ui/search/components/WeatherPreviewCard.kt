@@ -171,7 +171,7 @@ fun DismissBackground(dismissState: DismissState) {
             DismissDirection.StartToEnd -> Color.Transparent
             DismissDirection.EndToStart -> Color.Transparent
             null -> Color.Transparent
-        }
+        }, label = ""
 
     )
     val alignment = when (direction) {
@@ -193,7 +193,7 @@ fun DismissBackground(dismissState: DismissState) {
             if (dismissState.targetValue == DismissValue.DismissedToStart) {
                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
             }
-        }
+        }, label = ""
     )
 
     Box(
