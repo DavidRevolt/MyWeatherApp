@@ -53,7 +53,7 @@ fun SearchScreen(
                 modifier = Modifier.fillMaxWidth(),
                 onBackClick = onBackClick,
                 onSearchClick = onSearchClick,
-                onClearRecentSearches= onClearRecentSearches,
+                onClearRecentSearches = onClearRecentSearches,
                 recentSearchQueriesUiState = recentSearchQueriesUiState,
                 placeHolder = stringResource(R.string.searchplaceHolder),
             )
@@ -96,7 +96,8 @@ fun SearchScreen(
                     showLoadingIndicator = false
                     val message =
                         if (it.exception is HttpException) context.resources.getString(R.string.server_unable_to_find_location) else context.resources.getString(
-                                                    R.string.unable_to_connect)
+                            R.string.unable_to_connect
+                        )
                     onShowSnackbar(message, null)
                 }
             }

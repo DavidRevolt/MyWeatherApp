@@ -12,7 +12,7 @@ fun NavController.navigateToAbout(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.aboutScreen(onBackClick: () -> Unit) {
     composable(route = aboutRoute) {
-        AboutScreen(onBackClick  = onBackClick)
+        AboutScreen(onBackClick = onBackClick)
     }
 
 }

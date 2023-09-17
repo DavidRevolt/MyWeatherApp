@@ -1,8 +1,6 @@
 package com.example.myweatherapp.data.weatherRepository.modelMappers
 
 
-
-
 import android.util.Log
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherEntity
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherForecastEntity
@@ -82,8 +80,8 @@ fun formatDate(timestamp: Int): String {
 fun formatTime(timestamp: Int): String {
     val sdf = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.US)
     val date = java.util.Date(timestamp.toLong() * 1000)
-    Log.d("AppLog","TEST" )
-    Log.d("AppLog",sdf.format(date) )
+    Log.d("AppLog", "TEST")
+    Log.d("AppLog", sdf.format(date))
     return sdf.format(date)
 }
 

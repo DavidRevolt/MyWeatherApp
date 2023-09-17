@@ -9,6 +9,7 @@ import com.example.myweatherapp.data.weatherRepository.local.model.WeatherEntity
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherForecastEntity
 import com.example.myweatherapp.data.weatherRepository.local.model.WeatherWithWeatherForecast
 import kotlinx.coroutines.flow.Flow
+
 /**
  * Entity[Model] Weather have many Forecast -> One to many relationship
  * With RoomDb we create a Data Class for that: WeatherWithWeatherForecast that holds the parent Entity[The Weather] and his children [Forecasts]
@@ -57,6 +58,9 @@ interface WeatherDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     @Transaction
-    suspend fun upsertWeatherWithForecast(weatherEntity: WeatherEntity,weatherForecastEntities: List<WeatherForecastEntity>)
+    suspend fun upsertWeatherWithForecast(
+        weatherEntity: WeatherEntity,
+        weatherForecastEntities: List<WeatherForecastEntity>
+    )
 
 }

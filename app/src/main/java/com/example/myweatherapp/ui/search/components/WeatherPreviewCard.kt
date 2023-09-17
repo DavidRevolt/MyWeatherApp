@@ -58,8 +58,8 @@ import kotlin.text.Typography.degree
 fun WeatherPreviewCard(
     modifier: Modifier = Modifier,
     weatherList: List<Weather> = emptyList(),
-    onRowClick: (Int) -> Unit ={},
-    swipeToStartFunc: (Int) -> Unit ={},
+    onRowClick: (Int) -> Unit = {},
+    swipeToStartFunc: (Int) -> Unit = {},
     colors: List<Color> = listOf(MaterialTheme.colorScheme.primary),
 ) {
     LazyColumn(modifier = modifier) {

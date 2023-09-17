@@ -11,7 +11,7 @@ import com.example.myweatherapp.R
 import com.example.myweatherapp.utils.Constants
 
 @Composable
-fun WeatherIcon(icon: String,modifier: Modifier, colorFilter: ColorFilter? = null) {
+fun WeatherIcon(icon: String, modifier: Modifier, colorFilter: ColorFilter? = null) {
     AsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
             .data(Constants.ICON_URL + icon + "@2x.png")

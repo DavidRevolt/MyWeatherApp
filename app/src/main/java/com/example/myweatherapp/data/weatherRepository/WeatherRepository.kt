@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository : Syncable {
 
-    suspend  fun getNewWeather(city: String): NetworkResponse<Weather>
+    suspend fun getNewWeather(city: String): NetworkResponse<Weather>
     suspend fun getNewWeather(location: Location): NetworkResponse<Weather>
     fun getAllWeather(): Flow<List<Weather>>
     suspend fun deleteWeather(id: Int)

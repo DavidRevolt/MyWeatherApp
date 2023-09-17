@@ -21,7 +21,7 @@ import javax.inject.Singleton
 @Singleton
 class LocationServiceImpl @Inject constructor(
     @ApplicationContext private val context: Context,
-) :LocationService {
+) : LocationService {
     private var _locationRequest = LastLocationRequest.Builder().build()
 
     @RequiresPermission(
@@ -34,10 +34,10 @@ class LocationServiceImpl @Inject constructor(
             // coroutine should be executed on a thread reserved for I/O operations.
             // using withContext(Dispatchers.IO) so we could use await
             val locationClient = LocationServices.getFusedLocationProviderClient(context)
-             try{
+            try {
                 val result = await(locationClient.getLastLocation(_locationRequest))
                 Result.success(result)
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 Result.failure(e)
             }
         }

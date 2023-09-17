@@ -7,5 +7,5 @@ import dagger.hilt.android.HiltAndroidApp
  * HiltAndroidApp triggers Hilt's code generation
  * */
 @HiltAndroidApp
-class WeatherApplication: Application() {
+class WeatherApplication : Application() {
 }

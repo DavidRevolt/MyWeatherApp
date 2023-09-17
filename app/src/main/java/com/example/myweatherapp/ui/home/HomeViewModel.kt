@@ -29,8 +29,10 @@ class HomeViewModel @Inject constructor(
     private val lastLocationService: LocationService,
 ) : ViewModel(), Synchronizer {
 
-    val weatherUiState = combine( weatherRepository.getAllWeather(), userDataRepository.getWeatherIndexToFocusOn()){
-        weatherList, weatherIndexToFocusOn ->
+    val weatherUiState = combine(
+        weatherRepository.getAllWeather(),
+        userDataRepository.getWeatherIndexToFocusOn()
+    ) { weatherList, weatherIndexToFocusOn ->
         if (weatherList.isEmpty()) WeatherUiState.Empty else WeatherUiState.Success(
             weatherIndexToFocusOn = weatherIndexToFocusOn,
             data = weatherList

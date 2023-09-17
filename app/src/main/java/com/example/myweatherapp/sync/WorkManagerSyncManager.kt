@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class WorkManagerSyncManager @Inject constructor(
     @ApplicationContext private val context: Context,
-) : SyncManager{
+) : SyncManager {
     private val SyncWorkName = "SyncWorkName"
 
     override val isSyncing: Flow<Boolean> =
@@ -35,4 +35,5 @@ class WorkManagerSyncManager @Inject constructor(
         )
     }
 }
+
 private fun List<WorkInfo>.anyRunning() = any { it.state == WorkInfo.State.RUNNING }

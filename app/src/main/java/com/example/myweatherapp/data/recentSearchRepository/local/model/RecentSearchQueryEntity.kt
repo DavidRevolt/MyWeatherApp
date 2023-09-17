@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.Instant
 
-@Entity( tableName = "recentSearchQueries")
+@Entity(tableName = "recentSearchQueries")
 data class RecentSearchQueryEntity(
     @PrimaryKey
     val query: String,

@@ -8,7 +8,7 @@ import java.time.Instant
 @Entity(tableName = "weather")
 data class WeatherEntity(
     @PrimaryKey
-    val weatherId :Int,
+    val weatherId: Int,
     val city: String,
     val country: String,
     val latitude: String,

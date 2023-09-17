@@ -66,12 +66,17 @@ fun WeatherApp(
             }
         }
         val systemUiController = rememberSystemUiController()
-        systemUiController.systemBarsDarkContentEnabled =!appState.shouldShowTransparentSystemBars
+        systemUiController.systemBarsDarkContentEnabled = !appState.shouldShowTransparentSystemBars
 
         Scaffold(
             containerColor = Color.Transparent,
             contentWindowInsets = WindowInsets(0, 0, 0, 0),
-            snackbarHost = { SnackbarHost(snackbarHostState, modifier = Modifier.safeDrawingPadding()) },
+            snackbarHost = {
+                SnackbarHost(
+                    snackbarHostState,
+                    modifier = Modifier.safeDrawingPadding()
+                )
+            },
         ) { innerPadding ->
             Column(
                 modifier = Modifier

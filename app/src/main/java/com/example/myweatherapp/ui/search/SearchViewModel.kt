@@ -37,7 +37,8 @@ class SearchViewModel @Inject constructor(
         )
 
 
-    val recentSearchQueriesUiState = recentSearchRepository.getRecentSearchQueries(SEARCH_QUERY_LIMIT)
+    val recentSearchQueriesUiState =
+        recentSearchRepository.getRecentSearchQueries(SEARCH_QUERY_LIMIT)
             .map(RecentSearchQueriesUiState::Success)
             .stateIn(
                 scope = viewModelScope,
@@ -76,11 +77,11 @@ class SearchViewModel @Inject constructor(
     }
 
 
-
     fun clearRecentSearches() {
         viewModelScope.launch {
             recentSearchRepository.clearRecentSearches()
-        }}
+        }
+    }
 
 }
 
@@ -93,10 +94,11 @@ sealed interface SearchUiState {
 
 
 sealed interface RecentSearchQueriesUiState {
-     object Loading : RecentSearchQueriesUiState
+    object Loading : RecentSearchQueriesUiState
 
     data class Success(
         val recentQueries: List<RecentSearchQuery> = emptyList(),
     ) : RecentSearchQueriesUiState
 }
+
 private const val SEARCH_QUERY_LIMIT = 10

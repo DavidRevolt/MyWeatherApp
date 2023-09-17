@@ -31,7 +31,7 @@ import androidx.compose.ui.window.DialogWindowProvider
 
 
 @Composable
-fun LoadingIndicator(text: String = "Loading", dimAmount:Float = 0.5f) {
+fun LoadingIndicator(text: String = "Loading", dimAmount: Float = 0.5f) {
 
     //Text Animation
     val infiniteTransition = rememberInfiniteTransition()
@@ -45,7 +45,7 @@ fun LoadingIndicator(text: String = "Loading", dimAmount:Float = 0.5f) {
     )
 
     Dialog(
-        onDismissRequest = {  },
+        onDismissRequest = { },
         DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false)
     ) {
 
@@ -71,7 +71,11 @@ fun LoadingIndicator(text: String = "Loading", dimAmount:Float = 0.5f) {
                         .padding(5.dp)
                 )
                 AnimatedVisibility(visible = true) {
-                    Text(modifier = Modifier.scale(scale), text = text, fontWeight = FontWeight.SemiBold)
+                    Text(
+                        modifier = Modifier.scale(scale),
+                        text = text,
+                        fontWeight = FontWeight.SemiBold
+                    )
                 }
 
             }

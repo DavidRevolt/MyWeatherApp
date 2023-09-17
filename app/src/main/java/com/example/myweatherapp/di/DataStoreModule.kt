@@ -17,7 +17,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataStoreModule{
+object DataStoreModule {
     @Singleton
     @Provides
     fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> =
@@ -30,5 +30,6 @@ object DataStoreModule{
 
     @Singleton
     @Provides
-    fun provideUserPreferencesDataSource(userPreferences: DataStore<Preferences>) = UserPreferencesDataSource(userPreferences)
+    fun provideUserPreferencesDataSource(userPreferences: DataStore<Preferences>) =
+        UserPreferencesDataSource(userPreferences)
 }

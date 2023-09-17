@@ -238,6 +238,7 @@ internal class AndroidSystemUiController(
                 // contrast
                 transformColorForLightContent(color)
             }
+
             else -> color
         }.toArgb()
     }
@@ -258,6 +259,7 @@ internal class AndroidSystemUiController(
                 // contrast
                 transformColorForLightContent(color)
             }
+
             else -> color
         }.toArgb()
     }

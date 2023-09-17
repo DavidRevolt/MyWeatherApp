@@ -62,7 +62,7 @@ fun WeatherTopAppBar(
             }
         },
         actions = {
-            IconButton(onClick =  onGpsClick ) {
+            IconButton(onClick = onGpsClick) {
                 Icon(
                     imageVector = gpsIcon,
                     contentDescription = gpsIconContentDescription,

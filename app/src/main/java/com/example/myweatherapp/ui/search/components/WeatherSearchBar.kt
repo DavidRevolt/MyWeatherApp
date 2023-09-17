@@ -89,9 +89,10 @@ fun WeatherSearchBar(
                         .fillMaxWidth()
                         .padding(all = 14.dp)
                         .clickable(onClick = {
-                                active = !active
-                                onSearchClick(it.query)
-                        })) {
+                            active = !active
+                            onSearchClick(it.query)
+                        })
+                    ) {
                         Icon(imageVector = Icons.Default.History, contentDescription = null)
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(text = it.query)

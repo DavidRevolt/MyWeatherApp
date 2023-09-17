@@ -21,7 +21,7 @@ fun WeatherNavigation(
         navController = navController,
         startDestination = homeRoute,
 
-    ) {
+        ) {
         homeScreen(
             onAboutClick = navController::navigateToAbout,
             onSearchClick = navController::navigateToSearch,

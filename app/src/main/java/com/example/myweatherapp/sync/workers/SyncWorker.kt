@@ -42,12 +42,14 @@ class SyncWorker @AssistedInject constructor(
         if (syncedSuccessfully) {
             notificationService.postNewsNotification(
                 context.getString(R.string.weatherapp_synced_successfully),
-                context.getString(R.string.at)+" ${LocalTime.now()}")
+                context.getString(R.string.at) + " ${LocalTime.now()}"
+            )
             Result.success()
         } else {
             notificationService.postNewsNotification(
                 context.getString(R.string.weatherapp_didnt_synced),
-                context.getString(R.string.at)+" ${LocalTime.now()}")
+                context.getString(R.string.at) + " ${LocalTime.now()}"
+            )
             Result.retry()
         }
     }

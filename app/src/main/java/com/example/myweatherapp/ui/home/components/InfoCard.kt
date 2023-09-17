@@ -29,7 +29,7 @@ import com.example.myweatherapp.ui.designsystem.homeInfoCardTitleStyle
 @Composable
 fun InfoCard(
     modifier: Modifier = Modifier,
-    title: Triple<String?, String?, String?>? =  null,
+    title: Triple<String?, String?, String?>? = null,
     content: List<Triple<String, String, String?>> = emptyList(),
     useDivider: Boolean = true,
     titleStyle: SpanStyle = homeInfoCardTitleStyle,
@@ -74,7 +74,7 @@ fun InfoCard(
                 )
                 while (contentIterator.hasNext()) {
                     data = contentIterator.next()
-                    if(useDivider) Divider(color = homeCardHeadersColor)
+                    if (useDivider) Divider(color = homeCardHeadersColor)
                     InfoCardRow(
                         data.first,
                         data.second,
@@ -101,12 +101,15 @@ fun InfoCardRow(
     secondaryEndTextStyle: SpanStyle = SpanStyle()
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(2.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(2.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween //How To Spread The Text In The Row
     ) {
         startText?.let {
-            Text(maxLines = 1,
+            Text(
+                maxLines = 1,
                 modifier = Modifier.padding(start = 5.dp),
                 text = buildAnnotatedString {
                     withStyle(

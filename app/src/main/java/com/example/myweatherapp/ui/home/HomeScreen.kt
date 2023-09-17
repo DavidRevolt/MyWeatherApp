@@ -207,7 +207,7 @@ private fun HomeScreenContent(
     val pageCount = weatherList.size
 
     //currentPage could be 7 but the data for page 7 can be deleted from other screen, solution:
-  val pagerState = key(weatherList.size, weatherIndexToFocusOn) {
+    val pagerState = key(weatherList.size, weatherIndexToFocusOn) {
         rememberPagerState(
             initialPage = minOf(weatherIndexToFocusOn, weatherList.size - 1),
             initialPageOffsetFraction = 0f
@@ -244,7 +244,7 @@ private fun HomeScreenContent(
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            contentPadding = PaddingValues(8.dp, bottom = 50.dp)
+            contentPadding = PaddingValues(start = 8.dp, end = 8.dp, bottom = 50.dp)
         ) {
             item {
                 TempWidget(

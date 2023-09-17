@@ -36,8 +36,11 @@ class WeatherRepositoryImpl @Inject constructor(
 
     //Fetch New Weather Forecast From Network and upsert in Room
     override suspend fun getNewWeather(location: Location): NetworkResponse<Weather> =
-         try {
-            val response = weatherNetworkDataSource.getWeatherByCoordinates(location.latitude, location.longitude).asEntity()
+        try {
+            val response = weatherNetworkDataSource.getWeatherByCoordinates(
+                location.latitude,
+                location.longitude
+            ).asEntity()
             weatherDao.upsertWeatherWithForecast(
                 response.weatherEntity,
                 response.weatherForecastEntities
@@ -46,7 +49,6 @@ class WeatherRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             NetworkResponse.Error(exception = e)
         }
-
 
 
     override fun getAllWeather(): Flow<List<Weather>> =
@@ -60,12 +62,15 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun syncWith(synchronizer: Synchronizer): Boolean {
         return synchronizer.changeListSync(
             changeListFetcher = {
-                weatherDao.getOutdatedWeatherList().map { it -> it.asExternalModel()}
+                weatherDao.getOutdatedWeatherList().map { it -> it.asExternalModel() }
             },
             modelUpdater = { changedIds ->
-                changedIds.forEach{id ->
+                changedIds.forEach { id ->
                     val response = weatherNetworkDataSource.getWeatherByCityId(id).asEntity()
-                    weatherDao.upsertWeatherWithForecast(response.weatherEntity,response.weatherForecastEntities)
+                    weatherDao.upsertWeatherWithForecast(
+                        response.weatherEntity,
+                        response.weatherForecastEntities
+                    )
                 }
             }
         )

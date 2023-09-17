@@ -40,8 +40,8 @@ suspend fun Synchronizer.changeListSync(
 ) = suspendRunCatching {
     // convert the list of outdated weather to list of their id's
     val changeList = changeListFetcher().map { it.weatherId }
-    Log.d("AppLog","${changeList.size}")
-    if (changeList.isEmpty()){
+    Log.d("AppLog", "${changeList.size}")
+    if (changeList.isEmpty()) {
         Log.d("AppLog", "Everything is up to date!")
         return@suspendRunCatching true
     }
