@@ -37,6 +37,8 @@ import com.example.myweatherapp.ui.designsystem.homeCardIconColorFilter
 import com.example.myweatherapp.ui.designsystem.homeCardMaxTempStyle
 import com.example.myweatherapp.ui.designsystem.homeCardMinTempStyle
 import com.example.myweatherapp.ui.designsystem.homeCardTitleStyle
+import com.example.myweatherapp.ui.designsystem.homeCardWeatherDescriptionTextBackground
+import com.example.myweatherapp.ui.designsystem.homeCardWeatherDescriptionTextStyle
 import kotlin.text.Typography.degree
 
 
@@ -117,11 +119,11 @@ fun WeatherDetailRow(weather: WeatherForecast) {
         Text(
             weather.weatherDescription,
             modifier = Modifier
-                .background(color = Color(0xFFFFC400).copy(0.8f), shape = CircleShape)
+                .background(color = homeCardWeatherDescriptionTextBackground, shape = CircleShape)
                 .padding(2.dp)
                 .weight(2f),
-            style = MaterialTheme.typography.labelSmall,
-            textAlign = TextAlign.Center
+            style = homeCardWeatherDescriptionTextStyle,
+            maxLines = 1
         )
 
         Text(

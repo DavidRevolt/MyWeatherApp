@@ -80,8 +80,6 @@ fun formatDate(timestamp: Int): String {
 fun formatTime(timestamp: Int): String {
     val sdf = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.US)
     val date = java.util.Date(timestamp.toLong() * 1000)
-    Log.d("AppLog", "TEST")
-    Log.d("AppLog", sdf.format(date))
     return sdf.format(date)
 }
 

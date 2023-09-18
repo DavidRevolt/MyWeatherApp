@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.HorizontalPager
@@ -105,7 +106,7 @@ fun HomeScreen(
         }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().safeDrawingPadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box {
@@ -244,14 +245,14 @@ private fun HomeScreenContent(
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            contentPadding = PaddingValues(start = 8.dp, end = 8.dp, bottom = 50.dp)
+            contentPadding = PaddingValues(start = 8.dp, end = 8.dp, bottom = 20.dp)
         ) {
             item {
                 TempWidget(
                     modifier = Modifier
                         .padding(40.dp)
-                        .padding(top = 70.dp, bottom = 90.dp)
-                        .size(250.dp), weatherList[pagerState.currentPage].weatherForecast[0]
+                        .padding(top = 70.dp, bottom = 150.dp) ,
+                    weatherList[pagerState.currentPage].weatherForecast[0]
                 )
             }
 
