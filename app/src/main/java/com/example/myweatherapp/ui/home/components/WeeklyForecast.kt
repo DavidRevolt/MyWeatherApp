@@ -17,17 +17,18 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.myweatherapp.R
 import com.example.myweatherapp.model.WeatherForecast
 import com.example.myweatherapp.ui.designsystem.homeCardColor
@@ -39,6 +40,7 @@ import com.example.myweatherapp.ui.designsystem.homeCardMinTempStyle
 import com.example.myweatherapp.ui.designsystem.homeCardTitleStyle
 import com.example.myweatherapp.ui.designsystem.homeCardWeatherDescriptionTextBackground
 import com.example.myweatherapp.ui.designsystem.homeCardWeatherDescriptionTextStyle
+import com.example.myweatherapp.utils.Constants
 import kotlin.text.Typography.degree
 
 
@@ -93,22 +95,27 @@ fun WeeklyForecast(modifier: Modifier = Modifier, forecastList: List<WeatherFore
 }
 
 @Composable
-fun WeatherDetailRow(weather: WeatherForecast) {
+fun WeatherDetailRow(weatherForecast: WeatherForecast) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Box() {
-            WeatherIcon(
-                weather.iconId,
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(Constants.ICON_URL + weatherForecast.iconId + "@2x.png")
+                    .crossfade(true)
+                    .build(),
+
+                contentDescription = stringResource(R.string.weatherIcon),
                 modifier = Modifier.size(24.dp),
                 colorFilter = homeCardIconColorFilter
             )
         }
 
         Text(
-            weather.date
+            weatherForecast.date
                 .split(",")[0],
             modifier = Modifier
                 .padding(start = 5.dp)
@@ -117,7 +124,7 @@ fun WeatherDetailRow(weather: WeatherForecast) {
         )
 
         Text(
-            weather.weatherDescription,
+            weatherForecast.weatherDescription,
             modifier = Modifier
                 .background(color = homeCardWeatherDescriptionTextBackground, shape = CircleShape)
                 .padding(2.dp)
@@ -135,12 +142,12 @@ fun WeatherDetailRow(weather: WeatherForecast) {
                 withStyle(
                     style = homeCardMaxTempStyle
                 ) {
-                    append(weather.maxTemp + degree)
+                    append(weatherForecast.maxTemp + degree)
                 }
                 withStyle(
                     style = homeCardMinTempStyle
                 ) {
-                    append(weather.minTemp + degree)
+                    append(weatherForecast.minTemp + degree)
                 }
             })
     }
