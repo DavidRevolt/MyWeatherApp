@@ -5,6 +5,7 @@ follows the [official architecture guidance](https://developer.android.com/jetpa
 ### Features
 *   Get 7 days weather forecast for user current location with **1 click**.
 *   Search 7 days weather forecast for any location on the globe.
+*   Periodically synchronize weather data in the background.
 *   Local data Pagination.
 
 ### Highlights
