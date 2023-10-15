@@ -1,8 +1,8 @@
 package com.example.myweatherapp.di
 
 import com.example.myweatherapp.data.AppDatabase
-import com.example.myweatherapp.data.recentSearchRepository.local.RecentSearchQueryDao
-import com.example.myweatherapp.data.weatherRepository.local.WeatherDao
+import com.example.myweatherapp.data.recentsearchrepository.local.RecentSearchQueryDao
+import com.example.myweatherapp.data.weatherrepository.local.WeatherDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

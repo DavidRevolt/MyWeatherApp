@@ -1,7 +1,6 @@
 package com.example.myweatherapp.ui.designsystem
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -102,7 +101,7 @@ val homeInfoCardSecondaryEndContentStyle = SpanStyle(
     fontSize = 12.sp
 )
 
-val aboutTextStyle = TextStyle(
+val BasicTextStyle = TextStyle(
     fontWeight = FontWeight.Light,
     color = Color.White
 )

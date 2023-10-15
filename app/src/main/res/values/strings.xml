@@ -45,6 +45,7 @@
     <string name="longitude">Longitude</string>
     <string name="searchplaceHolder">e.g Rehovot, Israel</string>
     <string name="cptr_pull_to_refresh">Pull to refresh</string>
+    <string name="about_details">Using OpenWeather API: Daily Forecast 7-days</string>
 
 
 </resources>

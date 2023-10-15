@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.example.myweatherapp.R
-import com.example.myweatherapp.ui.designsystem.aboutTextStyle
+import com.example.myweatherapp.ui.designsystem.BasicTextStyle
 import com.example.myweatherapp.ui.designsystem.lightAppBarIconTint
 import com.example.myweatherapp.ui.designsystem.lightAppBarTextStyle
 
@@ -48,6 +48,6 @@ fun AboutScreen(onBackClick: () -> Unit) {
             },
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = Color.Transparent)
         )
-        Text(text = "Using OpenWeather API: Daily Forecast 7-days", style = aboutTextStyle)
+        Text(text = stringResource(id = R.string.about_details), style = BasicTextStyle)
     }
 }

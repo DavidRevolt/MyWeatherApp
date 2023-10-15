@@ -5,10 +5,10 @@ import androidx.annotation.RequiresPermission
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myweatherapp.common.ScreenEvent
-import com.example.myweatherapp.data.userDataRepository.UserDataRepository
+import com.example.myweatherapp.data.userdatarepository.UserDataRepository
 import com.example.myweatherapp.data.utils.NetworkResponse
 import com.example.myweatherapp.data.utils.Synchronizer
-import com.example.myweatherapp.data.weatherRepository.WeatherRepository
+import com.example.myweatherapp.data.weatherrepository.WeatherRepository
 import com.example.myweatherapp.model.Weather
 import com.example.myweatherapp.services.location.LocationService
 import dagger.hilt.android.lifecycle.HiltViewModel

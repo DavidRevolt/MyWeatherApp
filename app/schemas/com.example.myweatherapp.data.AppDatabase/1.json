@@ -1,0 +1,216 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "2f08a256a1e80d31afc9dff2053e3832",
+    "entities": [
+      {
+        "tableName": "recentSearchQueries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`query` TEXT NOT NULL, `timeStamp` INTEGER NOT NULL, PRIMARY KEY(`query`))",
+        "fields": [
+          {
+            "fieldPath": "query",
+            "columnName": "query",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeStamp",
+            "columnName": "timeStamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "query"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "weather",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`weatherId` INTEGER NOT NULL, `city` TEXT NOT NULL, `country` TEXT NOT NULL, `latitude` TEXT NOT NULL, `longitude` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, PRIMARY KEY(`weatherId`))",
+        "fields": [
+          {
+            "fieldPath": "weatherId",
+            "columnName": "weatherId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "country",
+            "columnName": "country",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "weatherId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "weatherForecast",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`weatherForecastId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `weatherCreatorId` INTEGER NOT NULL, `currentTemp` TEXT NOT NULL, `maxTemp` TEXT NOT NULL, `minTemp` TEXT NOT NULL, `weatherDescription` TEXT NOT NULL, `date` TEXT NOT NULL, `atmosphericPressure` TEXT NOT NULL, `humidity` TEXT NOT NULL, `windSpeed` TEXT NOT NULL, `sunrise` TEXT NOT NULL, `sunset` TEXT NOT NULL, `iconId` TEXT NOT NULL, `cloudiness` TEXT NOT NULL, `probabilityOfPrecipitation` TEXT NOT NULL, FOREIGN KEY(`weatherCreatorId`) REFERENCES `weather`(`weatherId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "weatherForecastId",
+            "columnName": "weatherForecastId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weatherCreatorId",
+            "columnName": "weatherCreatorId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentTemp",
+            "columnName": "currentTemp",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxTemp",
+            "columnName": "maxTemp",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "minTemp",
+            "columnName": "minTemp",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weatherDescription",
+            "columnName": "weatherDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "atmosphericPressure",
+            "columnName": "atmosphericPressure",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "humidity",
+            "columnName": "humidity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "windSpeed",
+            "columnName": "windSpeed",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sunrise",
+            "columnName": "sunrise",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sunset",
+            "columnName": "sunset",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "iconId",
+            "columnName": "iconId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cloudiness",
+            "columnName": "cloudiness",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "probabilityOfPrecipitation",
+            "columnName": "probabilityOfPrecipitation",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "weatherForecastId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_weatherForecast_weatherCreatorId",
+            "unique": false,
+            "columnNames": [
+              "weatherCreatorId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_weatherForecast_weatherCreatorId` ON `${TABLE_NAME}` (`weatherCreatorId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "weather",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "weatherCreatorId"
+            ],
+            "referencedColumns": [
+              "weatherId"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2f08a256a1e80d31afc9dff2053e3832')"
+    ]
+  }
+}

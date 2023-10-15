@@ -1,6 +1,6 @@
 package com.example.myweatherapp.di
 
-import com.example.myweatherapp.data.weatherRepository.network.WeatherNetworkDataSource
+import com.example.myweatherapp.data.weatherrepository.network.WeatherNetworkDataSource
 import com.example.myweatherapp.utils.Constants
 import dagger.Module
 import dagger.Provides

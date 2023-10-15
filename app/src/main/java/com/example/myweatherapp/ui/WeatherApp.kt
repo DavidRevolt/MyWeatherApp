@@ -1,6 +1,5 @@
 package com.example.myweatherapp.ui
 
-import android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -27,9 +26,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.myweatherapp.R
-import com.example.myweatherapp.data.userDataRepository.UserDataRepository
+import com.example.myweatherapp.data.userdatarepository.UserDataRepository
 import com.example.myweatherapp.navigation.WeatherNavigation
-import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorService
+import com.example.myweatherapp.services.networkmonitor.NetworkMonitorService
 import com.example.myweatherapp.sync.SyncManager
 import com.example.myweatherapp.ui.designsystem.RequestNotificationPermission
 import com.google.accompanist.systemuicontroller.rememberSystemUiController

@@ -57,6 +57,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.myweatherapp.R
 import com.example.myweatherapp.common.ScreenEvent
 import com.example.myweatherapp.model.Weather
+import com.example.myweatherapp.ui.designsystem.BasicTextStyle
 import com.example.myweatherapp.ui.designsystem.LoadingWheel
 import com.example.myweatherapp.ui.designsystem.homePagerDotColor
 import com.example.myweatherapp.ui.designsystem.homePagerDotCurrentColor
@@ -163,7 +164,7 @@ fun HomeScreen(
                 )
             }
 
-            is WeatherUiState.Empty -> Text(stringResource(R.string.nothing_to_show_here_yet))
+            is WeatherUiState.Empty -> Text(stringResource(R.string.nothing_to_show_here_yet), style = BasicTextStyle)
 
             is WeatherUiState.Loading -> LoadingWheel()
         }

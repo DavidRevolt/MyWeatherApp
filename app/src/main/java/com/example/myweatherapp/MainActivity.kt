@@ -1,12 +1,11 @@
 package com.example.myweatherapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import com.example.myweatherapp.data.userDataRepository.UserDataRepository
-import com.example.myweatherapp.services.NetworkMonitor.NetworkMonitorServiceImpl
+import com.example.myweatherapp.data.userdatarepository.UserDataRepository
+import com.example.myweatherapp.services.networkmonitor.NetworkMonitorService
 import com.example.myweatherapp.sync.SyncManager
 import com.example.myweatherapp.ui.WeatherApp
 import com.example.myweatherapp.ui.theme.MyWeatherAppTheme
@@ -16,9 +15,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    // JankStats, which is used to track jank throughout the app.
+
     @Inject
-    lateinit var networkMonitor: NetworkMonitorServiceImpl
+    lateinit var networkMonitor: NetworkMonitorService
 
     @Inject
     lateinit var syncManager: SyncManager
@@ -28,20 +27,16 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Used for making the status/nav bar transparent, Make sure to add lines in WeatherApp
+        // Edge2Edge
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        // Here choose theme and using splash screen
         setContent {
             //Force English
             val locale = Locale("en")
             Locale.setDefault(locale)
             MyWeatherAppTheme {
-                Log.d("", "Colors:")
                 WeatherApp(syncManager, networkMonitor, userDataRepository)
             }
         }
     }
 }
-
-
