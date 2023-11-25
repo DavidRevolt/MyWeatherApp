@@ -42,7 +42,7 @@ To install **MyWeatherApp**, follow these steps:
 <img src="screenshots/Paging.gif" width="250"/>  <img src="screenshots/Search.gif" width="250"/> <img src="screenshots/Delete.gif" width="250"/> <img src="screenshots/Refresh.gif" width="250"/>  
  
 
-
+*App background designed by [Rajesh Kumar](https://www.uplabs.com/rcrajeshkumar).
 
 
 
