@@ -39,9 +39,11 @@ To install **MyWeatherApp**, follow these steps:
 
 
 ## Demo
-![Refreshing](https://github.com/DavidRevolt/MyWeatherApp/assets/59780440/36e4143a-17df-4856-9859-bd3a03bc4113)
+<img src="screenshots/Paging.gif" width="250"/>  <img src="screenshots/img2.png" width="250"/> <img src="screenshots/img3.png" width="250"/> 
+<img src="screenshots/Search.gif" width="250"/>  <img src="screenshots/img2.png" width="250"/> <img src="screenshots/img3.png" width="250"/> 
+<img src="screenshots/Delete.gif" width="250"/>  <img src="screenshots/img2.png" width="250"/> <img src="screenshots/img3.png" width="250"/> 
+<img src="screenshots/Refresh.gif" width="250"/>  <img src="screenshots/img2.png" width="250"/> <img src="screenshots/img3.png" width="250"/> 
 
-![Delete](https://github.com/DavidRevolt/MyWeatherApp/assets/59780440/41edc09d-e06e-4f8f-adcb-ba0824968ff7)
 
 
 
