@@ -39,10 +39,10 @@ To install **MyWeatherApp**, follow these steps:
 
 
 ## Demo
-<img src="screenshots/Paging.gif" width="250"/>  
-<img src="screenshots/Search.gif" width="250"/>  
-<img src="screenshots/Delete.gif" width="250"/> 
-<img src="screenshots/Refresh.gif" width="250"/>  
+<img src="screenshots/Paging.gif" width="250"/>  <img src="screenshots/Search.gif" width="250"/> <img src="screenshots/Delete.gif" width="250"/> <img src="screenshots/Refresh.gif" width="250"/>  
+ 
+
+
 
 
 
